@@ -1,6 +1,6 @@
-# [SILVER IV] BOJ 11047 - 동전 0
+# [SILVER IV] BOJ 11047 - 동전 0 [CLASS 3]
 
-### [문제 링크](https://boj.kr/11047)
+[문제 링크](https://boj.kr/11047)
 
 ### 분류
 
