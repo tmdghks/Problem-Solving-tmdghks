@@ -1,6 +1,6 @@
-# [BRONZE 2747] BOJ 2747 - 피보나치 수 [CLASS 3]
+# [BRONZE II] BOJ 2747 - 피보나치 수
 
-[문제 링크](https://boj.kr/1764)
+[문제 링크](https://boj.kr/2747)
 
 ### 분류
 
