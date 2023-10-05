@@ -1,6 +1,6 @@
 # [SILVER I] BOJ 11057 - 오르막 수
 
-[문제 링크](https://boj.kr/2747)
+[문제 링크](https://boj.kr/11057)
 
 ### 분류
 
