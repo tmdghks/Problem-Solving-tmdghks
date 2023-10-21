@@ -29,6 +29,5 @@ int main() {
     for (int i = 0; i < 10; i++) {
         sum += v[n][i];
     }
-    cout << sum % 1000000000 << '\n';
-    
+    cout << sum % 1000000000 << '\n';    
 }
