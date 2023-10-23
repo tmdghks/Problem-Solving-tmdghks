@@ -1,10 +1,10 @@
-// BOJ 15650 N과 M (2)
+// BOJ 15651 N과 M (3)
 #include <bits/stdc++.h>
 
 using namespace std;
 using ll = long long;
 
-void dfs(int depth, int n, int m, int max, vector<int> v) {
+void dfs(int depth, int n, int m, vector<int> v) {
     if (depth == m) {
         for (auto num : v) {
             cout << num << ' ';
@@ -13,9 +13,9 @@ void dfs(int depth, int n, int m, int max, vector<int> v) {
         return;
     }
 
-    for (int i = max + 1; i <= n; i++) {
+    for (int i = 1; i <= n; i++) {
         v.push_back(i);
-        dfs(depth + 1, n, m, i, v);
+        dfs(depth + 1, n, m, v);
         v.pop_back();
     }
 }
@@ -29,5 +29,5 @@ int main() {
     cin >> n >> m;
 
     vector<int> v;
-    dfs(0, n, m, 0, v);
+    dfs(0, n, m, v);
 }
