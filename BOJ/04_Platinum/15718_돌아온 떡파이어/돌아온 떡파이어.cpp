@@ -10,7 +10,7 @@ ll fast_pow(ll a, ll p, ll mod) {
     else if (p == 1)
         return a;
     else if (p % 2 == 1) {
-        return fast_pow((a * a) % mod * a % mod, p / 2, mod);
+        return fast_pow((a * a) % mod, p / 2, mod) * a % mod;
     } else {
         return fast_pow((a * a) % mod, p / 2, mod);
     }
