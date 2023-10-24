@@ -1,6 +1,6 @@
 # [SILVER III] BOJ 15657 - N과 M (8) [CLASS 4]
 
-[문제 링크](https://boj.kr/15654)
+[문제 링크](https://boj.kr/15657)
 
 ### 분류
 
