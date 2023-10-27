@@ -1,8 +1,13 @@
 .vscode
 .cph
+.gitignore
+.gitattributes
 c++ PS template.cpp
 c++ PS template.exe
 Solving Playground.bin
 Solving Playground.cpp
 Solving Playground.exe
 readme template.md
+Solving Playground2.cpp
+Solving Playground2.exe
+Solving Playground2.bin
