@@ -2,7 +2,6 @@
 .cph
 .gitignore
 .gitattributes
-c++ PS template.cpp
 c++ PS template.exe
 Solving Playground.bin
 Solving Playground.cpp
