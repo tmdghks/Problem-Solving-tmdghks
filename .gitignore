@@ -3,3 +3,6 @@
 .gitignore
 .gitattributes
 Solving Playground*
+scala-solving-project*
+.metals*
+nodejs-solving-project
