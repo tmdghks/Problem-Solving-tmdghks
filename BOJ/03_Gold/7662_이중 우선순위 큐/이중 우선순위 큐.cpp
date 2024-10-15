@@ -1,37 +1,17 @@
-// 7662 : 이중 우선순위 큐
+// boj 7662
 #include <bits/stdc++.h>
 
 using namespace std;
 using ll = long long;
-using vll = vector<ll>;
-using vvll = vector<vll>;
-using LL = unsigned long long;
-using lll = __int128_t;
-using LLL =
-    __uint128_t;  // 128비트 정수는 cout, printf 등으로 입출력할 수 없음에 유의
+using vll = vector<long long>;
+using vvll = vector<vector<ll>>;
+using ld = long double;
+const ll mod = 1000000007;
 
 struct dt {
-    ll node1;
-    ll node2;
-    ll weight;
+    ll t;
+    ll p;
 };
-using vdt = vector<dt>;
-
-struct coordinate {
-    ll x;
-    ll y;
-    ll z;
-};
-
-double find_distance(const coordinate& c1, const coordinate& c2);
-
-struct cmp {
-    bool operator()(const dt& a, const dt& b) { return a.weight < b.weight; }
-};
-
-bool cmp_weights(const dt& a, const dt& b) { return a.weight < b.weight; }
-
-ll union_find(ll n, vll& root);
 
 void solve();
 
@@ -40,58 +20,82 @@ int main() {
     cin.tie(0);
     cout.tie(0);
 
-    ll T;
-    cin >> T;
-    while (T--) solve();
+    ll t;
+    cin >> t;
+
+    while (t--) {
+        solve();
+    }
 }
 
 void solve() {
-    ll k;
-    cin >> k;
+    priority_queue<ll, vll, greater<ll>> min_heap;
+    priority_queue<ll, vll, less<ll>> max_heap;
+    map<ll, ll> cnt;
 
-    ll double_pq_size = 0;
-    priority_queue<ll, vll, greater<ll>> pq1;
-    priority_queue<ll> pq2;
+    ll length = 0, query_number;
 
-    while (k--) {
-        string s;
-        ll a;
-        cin >> s >> a;
+    char op;
+    ll data;
+    cin >> query_number;
 
-        if (s == "I") {
-            double_pq_size++;
-            pq1.push(a);
-            pq2.push(a);
-        } else {
-            if (a == 1) {
-                if (double_pq_size) {
-                    pq2.pop();
-                    double_pq_size--;
-                }
+    for (ll i = 0; i < query_number; ++i) {
+        cin >> op >> data;
+
+        if (length == 0) {
+            while (!max_heap.empty()) {
+                max_heap.pop();
+            }
+
+            while (!min_heap.empty()) {
+                min_heap.pop();
+            }
+
+            cnt.clear();
+        }
+
+        if (op == 'I') {
+            length++;
+            max_heap.push(data);
+            min_heap.push(data);
+            if (cnt.find(data) == cnt.end()) {
+                cnt.insert({data, 1});
             } else {
-                if (double_pq_size) {
-                    pq1.pop();
-                    double_pq_size--;
+                cnt[data]++;
+            }
+        } else {
+            if (length == 0) {
+                continue;
+            }
+
+            length--;
+            if (data == 1) {
+                while (!max_heap.empty() && cnt[max_heap.top()] == 0) {
+                    max_heap.pop();
                 }
+                cnt[max_heap.top()]--;
+                max_heap.pop();
+            } else {
+                while (!min_heap.empty() && cnt[min_heap.top()] == 0) {
+                    min_heap.pop();
+                }
+                cnt[min_heap.top()]--;
+                min_heap.pop();
             }
         }
     }
 
-    if (double_pq_size) {
-        cout << pq2.top() << " " << pq1.top() << '\n';
-    } else {
+    while (!max_heap.empty() && cnt[max_heap.top()] == 0) {
+        max_heap.pop();
+    }
+
+    while (!min_heap.empty() && cnt[min_heap.top()] == 0) {
+        min_heap.pop();
+    }
+
+    if (length == 0) {
         cout << "EMPTY\n";
+    } else {
+        cout << max_heap.top() << " " << min_heap.top() << "\n";
     }
-}
-
-ll union_find(ll n, vll& root) {
-    if (root[n] == n)
-        return n;
-    else {
-        return root[n] = union_find(root[n], root);
-    }
-}
-
-double find_distance(const coordinate& c1, const coordinate& c2) {
-    return min({abs(c1.x - c2.x), abs(c1.y - c2.y), abs(c1.z - c2.z)});
 }
